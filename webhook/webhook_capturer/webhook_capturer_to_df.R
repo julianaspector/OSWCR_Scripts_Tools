@@ -4,7 +4,7 @@ library(gsheet)
 library(jsonlite)
 
 url <-
-  'https://docs.google.com/spreadsheets/d/1Nj4QjYX-NsL8wZoNtUZL3OLGnMmcNhAzBXK9u5x3JBc/edit?usp=sharing'
+  'https://docs.google.com/spreadsheets/d/UNIQUE_KEY/edit?usp=sharing'
 
 file <-
   read.csv(text = gsheet2text(url, format = 'csv'),
