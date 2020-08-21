@@ -70,5 +70,5 @@ df = pd.read_sql(query, SQLcxn)
 
 #write pandas dataframe to csv file
 
-df.to_csv('C:\\Users\\bbrezing\\Documents\\tmp\\SGMAPortal\\Change_in_Storage.csv' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
+df.to_csv('path here' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
 
