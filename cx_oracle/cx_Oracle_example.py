@@ -1,14 +1,14 @@
 import pandas as pd
-
 import cx_Oracle
+import os
 
  
 
 #Connect to BRR
 
-dsn_tns = cx_Oracle.makedsn("server name/IP", 1521, service_name="service name")
+dsn_tns = os.getenv(cx_Oracle.makedsn('server_name', 1521, service_name = 'service_name'))
 
-SQLcxn = cx_Oracle.connect('user id', 'pwd', dsn_tns)
+SQLcxn = os.getenv(cx_Oracle.connect('user_id' ',password', dsn_tns))
 
  
 
