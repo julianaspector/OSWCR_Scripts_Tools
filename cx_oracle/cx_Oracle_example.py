@@ -2,7 +2,9 @@ import pandas as pd
 import cx_Oracle
 import os
 
+# Get credentials from environmental variable in conda env
 connectString = os.getenv('BRR_credentials')
+
 #Connect to BRR
 
 dsn_tns = cx_Oracle.makedsn("mrsbldbe21277.ad.water.ca.gov", 1521, "B1048")
