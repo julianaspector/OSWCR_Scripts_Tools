@@ -2,15 +2,13 @@ import pandas as pd
 import cx_Oracle
 import os
 
- 
-
+connectString = os.getenv('BRR_credentials')
 #Connect to BRR
 
-dsn_tns = os.getenv(cx_Oracle.makedsn('server_name', 1521, service_name = 'service_name'))
+dsn_tns = cx_Oracle.makedsn("mrsbldbe21277.ad.water.ca.gov", 1521, "B1048")
 
-SQLcxn = os.getenv(cx_Oracle.connect('user_id' ',password', dsn_tns))
+SQLcxn = cx_Oracle.connect(connectString, dsn=dsn_tns)
 
- 
 
 #Sample SQL
 
@@ -70,5 +68,5 @@ df = pd.read_sql(query, SQLcxn)
 
 #write pandas dataframe to csv file
 
-df.to_csv('path here' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
+df.to_csv('~/anaconda3/envs/oracle_env/files/export.csv' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
 
