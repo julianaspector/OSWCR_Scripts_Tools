@@ -1,0 +1,19 @@
+# Read in data from OSWCR and EWM
+ewm_master_site <- read.csv("~/anaconda3/envs/oracle_env/files/20200824/EWM_MASTER_SITE.csv")
+ewm_station <- read.csv("~/anaconda3/envs/oracle_env/files/20200824/EWM_STATION.csv")
+viewsql_final <- read.csv("~/anaconda3/envs/oracle_env/files/20200824/VIEWSQL_FINAL_MAT_VW.csv")
+well_numbers <- read.csv("~/anaconda3/envs/oracle_env/files/20200824/WELL_NUMBERS_MAT_VW.csv")
+
+# Join EWM data by common field EWM_MASTER_SITE_ID
+EWM_join <- full_join(ewm_master_site, ewm_station, by = "EWM_MASTER_SITE_ID")
+
+# Rename column for state well number
+EWM_join <- EWM_join %>% rename(STATE_WELL_NUMBER = EWM_STATE_WELL_NBR)
+
+# Join OSWCR data by common field WCRNUMBER
+OSWCR_join <- full_join(viewsql_final, well_numbers, by = "WCRNUMBER")
+
+# Inner join OSWCR and EWM data
+EWM_OSWCR_join <- inner_join(OSWCR_join, EWM_join, by = "STATE_WELL_NUMBER")
+
+                             
