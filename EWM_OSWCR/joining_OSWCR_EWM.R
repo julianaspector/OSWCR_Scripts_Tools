@@ -25,7 +25,6 @@ EWM_join <-
 EWM_join <-
   EWM_join %>% rename(STATE_WELL_NUMBER = EWM_STATE_WELL_NBR)
 
-
 # Join OSWCR data by common field WCRNUMBER
 OSWCR_join <-
   full_join(viewsql_final, well_numbers, by = "WCRNUMBER")
@@ -42,3 +41,10 @@ swn_join[swn_join == "NN"] <- NA
 
 # anti-join
 swn_anti_join <- anti_join(EWM_join, OSWCR_join, by="STATE_WELL_NUMBER")
+
+single_completions <- OSWCR_join %>% 
+  group_by(WCRNUMBER) %>% 
+  filter(n()==1)
+
+singleCompletions_join <- inner_join(single_completions, EWM_join, by="STATE_WELL_NUMBER")
+singleCompletions_join[singleCompletions_join == "NN"] <- NA
