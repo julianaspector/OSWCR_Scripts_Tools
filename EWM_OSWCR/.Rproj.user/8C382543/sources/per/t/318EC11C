@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1599778587460.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "318EC11C",
+    "lastKnownWriteTime" : -4319598273210510547,
+    "last_content_update" : 1599778587460,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "28C85678",
+        "caption" : "lookup_PDF",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=lookup_PDF&cache_key=28C85678",
+        "displayedObservations" : 2608,
+        "environment" : "",
+        "object" : "lookup_PDF",
+        "preview" : 0,
+        "totalObservations" : 2608,
+        "variables" : 13
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -7,11 +7,13 @@ ewm_master_site <-
 ewm_station <-
   fread("~/anaconda3/envs/oracle_env/files/20200902/EWM_STATION.csv")
 viewsql_final <-
-  fread("~/anaconda3/envs/oracle_env/files/20200904/VIEWSQL_FINAL_MAT_VW.csv")
+  fread("~/anaconda3/envs/oracle_env/files/20200910/VIEWSQL_FINAL_MAT_VW.csv")
 well_numbers <-
   fread("~/anaconda3/envs/oracle_env/files/20200902/WELL_NUMBERS.csv")
 ewm_perforations <-
   fread("~/anaconda3/envs/oracle_env/files/20200902/EWM_STATION_PERFORATION.csv")
+wcr_links <-
+  fread("~/anaconda3/envs/oracle_env/files/20200910/20200901_WCRPDFlinks_table.csv")
 
 # Replace blank rows with NA
 ewm_master_site[ewm_master_site == ""] <- NA
@@ -40,6 +42,8 @@ EWM_join_perf <-
     LEGACYLOGNUMBER = COMPLETION_RPT_NBR
   )
 
+wcr_links <- wcr_links %>% rename(WCRNUMBER=WCRNumber)
+
 # Join OSWCR data by common field WCRNUMBER
 OSWCR_join <-
   full_join(viewsql_final, well_numbers, by = "WCRNUMBER")
@@ -64,3 +68,14 @@ first_join <-
 # second join by LLN
 second_join <-
   inner_join(OSWCR_join_legacy, ewm_join_legacy, by = "LEGACYLOGNUMBER")
+
+# filter first join to remove EWM depth data with NA and only new production/monitoring wells from OSWCR
+first_join_filtered <-
+  first_join %>% select(
+    WCRNUMBER,
+    TOTALCOMPLETEDDEPTH.y,
+    TOPOFPERFORATEDINTERVAL.y,
+    BOTTOMOFPERFORATEDINTERVAL.y
+  ) %>% drop_na(TOTALCOMPLETEDDEPTH.y)
+
+lookup_PDF <- inner_join(first_join_filtered, wcr_links)

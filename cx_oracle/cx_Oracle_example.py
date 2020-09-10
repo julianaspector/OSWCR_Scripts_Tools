@@ -13,7 +13,8 @@ SQLcxn = cx_Oracle.connect(connectString, dsn=dsn_tns)
 
 
 #Sample SQL
-query ="""select WCRNUMBER, 
+query ="""select WCRNUMBER,
+RECORDTYPE, 
 LEGACYLOGNUMBER, 
 TOTALCOMPLETEDDEPTH, 
 TOPOFPERFORATEDINTERVAL, 
@@ -34,5 +35,5 @@ df = pd.read_sql(query, SQLcxn)
 
 #write pandas dataframe to csv file
 
-df.to_csv('~/anaconda3/envs/oracle_env/files/20200904/VIEWSQL_FINAL_MAT_VW.csv' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
+df.to_csv('~/anaconda3/envs/oracle_env/files/20200910/VIEWSQL_FINAL_MAT_VW.csv' , index=False,  mode = 'w', header = True, float_format='%g', encoding='utf-8')
 

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1599775199433.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "105FAF52",
+    "lastKnownWriteTime" : 1599774732,
+    "last_content_update" : 1599775199433,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "685129F3",
+        "caption" : "second_join",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=second_join&cache_key=685129F3",
+        "displayedObservations" : 6448,
+        "environment" : "",
+        "object" : "second_join",
+        "preview" : 0,
+        "totalObservations" : 6448,
+        "variables" : 73
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
